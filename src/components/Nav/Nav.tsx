@@ -2,6 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { Box, Stack, Button } from "@mui/material";
+import navButtonStyles from "@/styles/navButtonStyles";
 
 type NavProps = {
   closeMenu?: () => void;
@@ -14,31 +16,29 @@ const Nav: React.FC<NavProps> = ({ closeMenu }) => {
     closeMenu?.();
   };
 
+  const navItems = [
+    { label: t("About"), href: "#About" },
+    { label: t("Portfolio"), href: "#Portfolio" },
+    { label: t("Prices"), href: "#Prices" },
+    { label: t("FAQ"), href: "#FAQ" },
+  ];
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link href="#About" onClick={handleLinkClick}>
-            {t("About")}
-          </Link>
-        </li>
-        <li>
-          <Link href="#Portfolio" onClick={handleLinkClick}>
-            {t("Portfolio")}
-          </Link>
-        </li>
-        <li>
-          <Link href="#Prices" onClick={handleLinkClick}>
-            {t("Prices")}
-          </Link>
-        </li>
-        <li>
-          <Link href="#FAQ" onClick={handleLinkClick}>
-            {t("FAQ")}
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <Box component="nav">
+      <Stack direction="row" spacing={2}>
+        {navItems.map(({ label, href }) => (
+          <Button
+            key={href}
+            component={Link}
+            href={href}
+            onClick={handleLinkClick}
+            sx={navButtonStyles}
+          >
+            {label}
+          </Button>
+        ))}
+      </Stack>
+    </Box>
   );
 };
 
