@@ -1,4 +1,5 @@
-import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
+"use client";
+
 import Nav from "../Nav/Nav";
 import Logo from "./Logo";
 
@@ -6,6 +7,8 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import CustomButton from "../ui/CustomButton";
+import LanguageButtonWithSwitcher from "../LocaleSwitcher/LanguageButtonWithSwitcher";
 
 const Header = () => {
   return (
@@ -19,12 +22,22 @@ const Header = () => {
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
-              py: 2,
             }}
           >
             <Logo />
-            <Nav />
-            <LocaleSwitcher />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "35px",
+              }}
+            >
+              <Nav />
+
+              <CustomButton>ЗВ’ЯЗАТИСЬ</CustomButton>
+
+              <LanguageButtonWithSwitcher />
+            </Box>
           </Box>
         </Toolbar>
       </Container>

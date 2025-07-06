@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { Box, Stack, Button } from "@mui/material";
-import navButtonStyles from "@/styles/navButtonStyles";
+import { Box, Button } from "@mui/material";
+import navButtonStyles from "@/components/ui/navButtonStyles";
 
 type NavProps = {
   closeMenu?: () => void;
@@ -25,7 +25,13 @@ const Nav: React.FC<NavProps> = ({ closeMenu }) => {
 
   return (
     <Box component="nav">
-      <Stack direction="row" spacing={2}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: "35px",
+          alignItems: "center",
+        }}
+      >
         {navItems.map(({ label, href }) => (
           <Button
             key={href}
@@ -37,7 +43,7 @@ const Nav: React.FC<NavProps> = ({ closeMenu }) => {
             {label}
           </Button>
         ))}
-      </Stack>
+      </Box>
     </Box>
   );
 };
